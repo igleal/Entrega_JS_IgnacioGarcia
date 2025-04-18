@@ -4,7 +4,7 @@ const cafeBebidas = [
     nombre: "Latte Hot",
     descripcion: "Espresso y leche al vapor.",
     precio: 3.75,
-    imagen: "../assets/img_productos/latte_hot.png",
+    imagen: "/assets/img_productos/latte_hot.png",
     alt: "Latte caliente con espresso y leche al vapor",
   },
   {
@@ -12,7 +12,7 @@ const cafeBebidas = [
     nombre: "Latte Iced",
     descripcion: "Espresso y leche; servido sobre hielo.",
     precio: 4.0,
-    imagen: "../assets/img_productos/latte_iced.png",
+    imagen: "/assets/img_productos/latte_iced.png",
     alt: "Latte frío servido con hielo",
   },
   {
@@ -21,7 +21,7 @@ const cafeBebidas = [
     descripcion:
       "Chocolate real y espresso combinado con leche; servido sobre hielo.",
     precio: 4.5,
-    imagen: "../assets/img_productos/mocha_iced.png",
+    imagen: "/assets/img_productos/mocha_iced.png",
     alt: "Mocha frío con chocolate y espresso sobre hielo",
   },
   {
@@ -30,7 +30,7 @@ const cafeBebidas = [
     descripcion:
       "Chocolate real derretido en leche al vapor, combinado con espresso y cubierto con crema batida y chispas de chocolate.",
     precio: 4.75,
-    imagen: "../assets/img_productos/mocha_hot.png",
+    imagen: "/assets/img_productos/mocha_hot.png",
     alt: "Mocha caliente con crema batida y chispas de chocolate",
   },
   {
@@ -39,7 +39,7 @@ const cafeBebidas = [
     descripcion:
       "Espresso y leche al vapor cubierto con una capa profunda de espuma.",
     precio: 3.95,
-    imagen: "../assets/img_productos/cappuccino.png",
+    imagen: "/assets/img_productos/cappuccino.png",
     alt: "Cappuccino espumoso servido en taza",
   },
   {
@@ -47,7 +47,7 @@ const cafeBebidas = [
     nombre: "Americano Hot",
     descripcion: "Espresso con agua caliente humeante.",
     precio: 3.0,
-    imagen: "../assets/img_productos/americano_hot.png",
+    imagen: "/assets/img_productos/americano_hot.png",
     alt: "Café americano caliente con espresso y agua",
   },
   {
@@ -55,7 +55,7 @@ const cafeBebidas = [
     nombre: "Americano Iced",
     descripcion: "Espresso fresco enfriado sobre hielo.",
     precio: 3.25,
-    imagen: "../assets/img_productos/americano_iced.png",
+    imagen: "/assets/img_productos/americano_iced.png",
     alt: "Americano frío servido sobre hielo",
   },
   {
@@ -63,7 +63,7 @@ const cafeBebidas = [
     nombre: "Espresso",
     descripcion: "Espresso recién hecho.",
     precio: 2.5,
-    imagen: "../assets/img_productos/espresso.png",
+    imagen: "/assets/img_productos/espresso.png",
     alt: "Taza de espresso recién preparado",
   },
   {
@@ -71,7 +71,7 @@ const cafeBebidas = [
     nombre: "Macchiato",
     descripcion: "Espresso rematado con una cucharada de espuma.",
     precio: 2.75,
-    imagen: "../assets/img_productos/macchiato.png",
+    imagen: "/assets/img_productos/macchiato.png",
     alt: "Macchiato con espuma en la parte superior",
   },
   {
@@ -80,7 +80,7 @@ const cafeBebidas = [
     descripcion:
       "Espresso Forte y leche al vapor combinada con ricos cocoas y jarabe de avellana. Cubierto con crema batida.",
     precio: 5.0,
-    imagen: "../assets/img_productos/latte_avellana_chocolate_oscuro.png",
+    imagen: "/assets/img_productos/latte_avellana_chocolate_oscuro.png",
     alt: "Latte de avellana con crema batida",
   },
   {
@@ -88,7 +88,7 @@ const cafeBebidas = [
     nombre: "Latte Eggnog",
     descripcion: "Espresso Forte combinado con ponche de huevo al vapor.",
     precio: 5.25,
-    imagen: "../assets/img_productos/latte_eggnog.png",
+    imagen: "/assets/img_productos/latte_eggnog.png",
     alt: "Latte de ponche de huevo con espresso",
   },
   {
@@ -97,7 +97,7 @@ const cafeBebidas = [
     descripcion:
       "Chocolate blanco suave combinado con menta. ¡Un favorito de vacaciones de niños y adultos por igual!",
     precio: 4.95,
-    imagen: "../assets/img_productos/candy_cane_chocolate_blanco_caliente.png",
+    imagen: "/assets/img_productos/candy_cane_chocolate_blanco_caliente.png",
     alt: "Chocolate blanco caliente con menta estilo Candy Cane",
   },
   {
@@ -106,7 +106,7 @@ const cafeBebidas = [
     descripcion:
       "Espresso Forte y leche al vapor combinados con sabores de azúcar caramelizada y canela dulce.",
     precio: 5.0,
-    imagen: "../assets/img_productos/tostada_canela_latte.png",
+    imagen: "/assets/img_productos/tostada_canela_latte.png",
     alt: "Latte con sabor a tostada de canela",
   },
   {
@@ -115,7 +115,7 @@ const cafeBebidas = [
     descripcion:
       "Audaz Espresso Forte combinado con jarabe de menta y chocolate cremoso.",
     precio: 5.25,
-    imagen: "../assets/img_productos/moccaccino_menta.png",
+    imagen: "/assets/img_productos/moccaccino_menta.png",
     alt: "Moccaccino con chocolate y menta",
   },
   {
@@ -124,7 +124,7 @@ const cafeBebidas = [
     descripcion:
       "Mezcla festiva de especias chai, leche de avena cremosa y caramelo, servido sobre hielo.",
     precio: 4.85,
-    imagen: "../assets/img_productos/caramelo_chai_avena_iced.png",
+    imagen: "/assets/img_productos/caramelo_chai_avena_iced.png",
     alt: "Chai helado con leche de avena y caramelo",
   },
   {
@@ -133,7 +133,7 @@ const cafeBebidas = [
     descripcion:
       "Leche de avena cremosa y Espresso Forte infundida con los sabores de tostadas de canela.",
     precio: 5.1,
-    imagen: "../assets/img_productos/tostada_canela_avena_latte.png",
+    imagen: "/assets/img_productos/tostada_canela_avena_latte.png",
     alt: "Latte de avena con sabor a tostada de canela",
   },
 ];
@@ -165,7 +165,7 @@ function mostrarBebidas(cafeBebidas) {
       "bg-indigo-200 shadow-md rounded-lg p-6 m-2 min-w-sm max-w-sm";
 
     cartaBedida.innerHTML = `
-    <img src="${bebida.imagen}" alt="${bebida.alt}" class="max-w-sm h-48 object-cover rounded-t-lg mb-4 block mx-auto">
+    <img src=".${bebida.imagen}" alt="${bebida.alt}" class="max-w-sm h-48 object-cover rounded-t-lg mb-4 block mx-auto">
     <h2 class="text-xl font-semibold text-gray-800 mb-2">${bebida.nombre}</h2>
     <p class="text-gray-600 text-sm mb-4">${bebida.descripcion}</p>
     <h3 class="text-gray-800 text-sm mb-4 font-semibold">${bebida.precio} $</h3>

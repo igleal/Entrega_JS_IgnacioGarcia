@@ -35,7 +35,7 @@ function mostrarFactura(facturaStorage) {
     contenidoFactura.className = `flex items-center justify-between gap-4 bg-white shadow-md rounded-lg p-4 w-full max-w-3xl mb-4`;
     contenidoFactura.innerHTML = `
 
-    <img src="${factura.imagen}" alt="${factura.alt}" class="w-24 h-24 object-cover rounded">
+    <img src="..${factura.imagen}" alt="${factura.alt}" class="w-24 h-24 object-cover rounded">
 
     <h2 class="text-lg font-semibold text-gray-800 mb-2">${factura.nombre}</h2>
 
