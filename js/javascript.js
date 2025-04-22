@@ -192,8 +192,19 @@ function agregarFactura() {
       const bebidasGuardadas =
         JSON.parse(localStorage.getItem("bebidaStorage")) || [];
 
-      bebidasGuardadas.push(bebidaSelecionado);
+      const verificaBebida = bebidasGuardadas.find(
+        (bsGuardada) => bsGuardada.id === bebidaSelecionado.id
+      );
 
+      if (verificaBebida) {
+        verificaBebida.cantidad++;
+      } else {
+        const bebida = {
+          ...bebidaSelecionado,
+          cantidad: 1,
+        };
+        bebidasGuardadas.push(bebida);
+      }
       localStorage.setItem("bebidaStorage", JSON.stringify(bebidasGuardadas));
     });
   });
