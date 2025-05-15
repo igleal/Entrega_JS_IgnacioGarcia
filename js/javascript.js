@@ -143,9 +143,9 @@ bebidaContenedor.className = `bg-lime-100 flex flex-col items-center`;
 
 function botonCarta() {
   const cartaBotones = document.createElement("div");
-  cartaBotones.className = `p-2`;
+  cartaBotones.className = `w-screen flex items-center justify-between bg-lime-300 p-4`;
   cartaBotones.innerHTML = `
-  <a href="" class="bg-lime-400 hover:bg-lime-600 p-2 rounded-lg text-sm">Agregar Producto</a>
+  <a href="" class="bg-lime-400 hover:bg-lime-600 p-2 rounded-lg text-sm">Historial de Compras</a>
   <a href="./page/factura.html" class="bg-lime-400 hover:bg-lime-600 p-2 rounded-lg text-sm">Ver Factura</a>
   `;
 
@@ -162,7 +162,7 @@ function mostrarBebidas(cafeBebidas) {
     const cartaBedida = document.createElement("article");
 
     cartaBedida.className =
-      "bg-indigo-200 shadow-md rounded-lg p-6 m-2 min-w-sm max-w-sm";
+      "bg-indigo-200 shadow-md rounded-lg p-4 m-2 min-w-sm max-w-sm";
 
     cartaBedida.innerHTML = `
     <img src=".${bebida.imagen}" alt="${bebida.alt}" class="max-w-sm h-48 object-cover rounded-t-lg mb-4 block mx-auto">
@@ -206,6 +206,15 @@ function agregarFactura() {
         bebidasGuardadas.push(bebida);
       }
       localStorage.setItem("bebidaStorage", JSON.stringify(bebidasGuardadas));
+
+      Toastify({
+        text: "Compra Agregada",
+        duration: 1500,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "#f87171",
+      }).showToast();
     });
   });
 }
+

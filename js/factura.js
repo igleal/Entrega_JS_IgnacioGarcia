@@ -1,6 +1,29 @@
 /* Aqui va el JS para factura.hmtl */
 const facturaContenedor = document.getElementById("facturas_Contenedor");
-facturaContenedor.className = `bg-lime-100 flex flex-col items-center`;
+facturaContenedor.className = `bg-lime-100 min-h-screen flex flex-col items-center`;
+
+function contenedorBotones() {
+  const divBoton = document.createElement("div");
+
+  divBoton.className = "w-screen flex items-center justify-between bg-lime-300 p-4 bottom-4"
+
+  const botonesIzquierdo = document.createElement("div");
+  botonesIzquierdo.innerHTML = `
+    <a href="../index.html" class="bg-lime-400 hover:bg-lime-600 p-2 rounded-lg text-sm">Regresar</a>
+    `;
+
+  const botonesDerecho = document.createElement("div");
+  botonesDerecho.innerHTML = `
+  <button class="bg-lime-400 hover:bg-lime-600 p-2 rounded-lg text-sm">Limpiar</button>
+  <button class="bg-lime-400 hover:bg-lime-600 p-2 rounded-lg text-sm">Comprar</button>`;
+
+  divBoton.appendChild(botonesIzquierdo);
+  divBoton.appendChild(botonesDerecho);
+
+  facturaContenedor.appendChild(divBoton);
+}
+
+contenedorBotones();
 
 const storageBebidas = localStorage.getItem("bebidaStorage");
 
@@ -19,18 +42,7 @@ function mensajeFactura() {
   facturaContenedor.appendChild(mensaje);
 }
 
-function botonCarta() {
-  const cartaBotones = document.createElement("div");
-  cartaBotones.className = `p-4`;
-  cartaBotones.innerHTML = `
-    <a href="" id="limpiarFactura" class="bg-lime-400 hover:bg-lime-600 p-2 rounded-lg text-sm">Limpiar</a>
-    <a href="../index.html" class="bg-lime-400 hover:bg-lime-600 p-2 rounded-lg text-sm">Regresar</a>
-    `;
 
-  facturaContenedor.appendChild(cartaBotones);
-}
-
-botonCarta();
 
 function mostrarFactura(facturaStorage) {
   facturaStorage.forEach((factura) => {
@@ -48,9 +60,9 @@ function mostrarFactura(facturaStorage) {
     
     <div class="flex items-center gap-2">
     <button id="${factura.id}" class="botonResta facturaBoton bg-lime-300 hover:bg-lime-500 px-2 py-1 rounded text-white text-sm font-bold">-</button>
-    <spam class="contador">${factura.cantidad}</spam>
+    <span class="contador">${factura.cantidad}</span>
     <button id="${factura.id}" class="botonSuma facturaBoton bg-yellow-300 hover:bg-yellow-500 px-2 py-1 rounded text-white text-sm font-bold">+</button>
-    <button id="${factura.id}" class="botonEliminar bg-red-400 hover:bg-red-600 px-2 py-1 rounded text-white text-sm font-bold">Quitar</button>
+    <button id="${factura.id}" class="botonEliminar bg-red-400 hover:bg-red-600 px-2 py-1 rounded text-white text-sm font-bold">Eliminar</button>
     </div>`;
     facturaContenedor.appendChild(contenidoFactura);
   });
@@ -80,8 +92,24 @@ function eliminarFactura() {
         bebidasGuardadas.splice(facturaSelecionado, 1);
         localStorage.setItem("bebidaStorage", JSON.stringify(bebidasGuardadas));
         boton.closest("article").remove();
+
+        Toastify({
+          text: "Bebida Eliminada",
+          duration: 1500,
+          gravity: "top",
+          position: "center",
+          backgroundColor: "#f87171",
+        }).showToast();
       }
     });
+  });
+}
+
+function limpiarBoton() {
+  const botonLimpiar = document.getElementById("limpiarFactura");
+
+  botonLimpiar.addEventListener("click", () => {
+    localStorage.removeItem(bebidaStorage);
   });
 }
 
@@ -103,11 +131,22 @@ function restaBebida() {
       if (facturaSelecionado !== -1) {
         if (bebidasGuardadas[facturaSelecionado].cantidad > 1) {
           bebidasGuardadas[facturaSelecionado].cantidad--;
-        } else {
+
+          Toastify({
+            text: "Bebida Actualizada",
+            duration: 1500,
+            gravity: "top",
+            position: "right",
+            backgroundColor: "#f87171",
+          }).showToast();
+        } /* else {
           bebidasGuardadas.splice(facturaSelecionado, 1);
           const bebida = document.querySelector("article");
-        }
+        } */
+
         localStorage.setItem("bebidaStorage", JSON.stringify(bebidasGuardadas));
+
+        contador(e.currentTarget, bebidasGuardadas, facturaSelecionado);
       }
     });
   });
@@ -131,9 +170,29 @@ function sumaBebida() {
       if (facturaSelecionado !== -1) {
         if (bebidasGuardadas[facturaSelecionado].cantidad) {
           bebidasGuardadas[facturaSelecionado].cantidad++;
+
+          Toastify({
+            text: "Bebida Actualizada",
+            duration: 1500,
+            gravity: "top",
+            position: "right",
+            backgroundColor: "#34d399",
+          }).showToast();
         }
         localStorage.setItem("bebidaStorage", JSON.stringify(bebidasGuardadas));
       }
+
+      contador(e.currentTarget, bebidasGuardadas, facturaSelecionado);
     });
   });
+}
+
+function contador(ecurrentTarget, bebidasGuardadas, facturaSelecionado) {
+  const article = ecurrentTarget.closest("article");
+  if (article) {
+    const contador = article.querySelector("span.contador");
+    if (contador) {
+      contador.innerText = bebidasGuardadas[facturaSelecionado].cantidad;
+    }
+  }
 }
