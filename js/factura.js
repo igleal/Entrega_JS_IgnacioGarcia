@@ -5,7 +5,8 @@ facturaContenedor.className = `bg-lime-100 min-h-screen flex flex-col items-cent
 function contenedorBotones() {
   const divBoton = document.createElement("div");
 
-  divBoton.className = "w-screen flex items-center justify-between bg-lime-300 p-4 bottom-4"
+  divBoton.className =
+    "w-screen flex items-center justify-between bg-lime-300 p-4 bottom-4";
 
   const botonesIzquierdo = document.createElement("div");
   botonesIzquierdo.innerHTML = `
@@ -42,9 +43,10 @@ function mensajeFactura() {
   facturaContenedor.appendChild(mensaje);
 }
 
-
-
 function mostrarFactura(facturaStorage) {
+  const facturaDiv = document.createElement("div");
+  facturaDiv.className = `pt-4`;
+
   facturaStorage.forEach((factura) => {
     const contenidoFactura = document.createElement("article");
     contenidoFactura.className = `flex items-center justify-between gap-4 bg-white shadow-md rounded-lg p-4 w-full max-w-3xl mb-4`;
@@ -64,8 +66,11 @@ function mostrarFactura(facturaStorage) {
     <button id="${factura.id}" class="botonSuma facturaBoton bg-yellow-300 hover:bg-yellow-500 px-2 py-1 rounded text-white text-sm font-bold">+</button>
     <button id="${factura.id}" class="botonEliminar bg-red-400 hover:bg-red-600 px-2 py-1 rounded text-white text-sm font-bold">Eliminar</button>
     </div>`;
-    facturaContenedor.appendChild(contenidoFactura);
+
+    facturaDiv.appendChild(contenidoFactura);
   });
+
+  facturaContenedor.appendChild(facturaDiv);
   eliminarFactura();
   restaBebida();
   sumaBebida();

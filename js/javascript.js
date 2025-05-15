@@ -156,13 +156,13 @@ botonCarta();
 
 function mostrarBebidas(cafeBebidas) {
   const divBedida = document.createElement("div");
-  divBedida.className = `flex flex-wrap justify-center gap-4`;
+  divBedida.className = `flex flex-wrap justify-center gap-4 pt-4`;
 
   cafeBebidas.forEach((bebida) => {
     const cartaBedida = document.createElement("article");
 
     cartaBedida.className =
-      "bg-indigo-200 shadow-md rounded-lg p-4 m-2 min-w-sm max-w-sm";
+      "bg-indigo-200 shadow-md rounded-lg p-4 min-w-sm max-w-sm";
 
     cartaBedida.innerHTML = `
     <img src=".${bebida.imagen}" alt="${bebida.alt}" class="max-w-sm h-48 object-cover rounded-t-lg mb-4 block mx-auto">
