@@ -1,4 +1,4 @@
-import { modalCarrito } from "./factura.js";
+import { modalCarrito } from "./modalCarrito.js";
 import { modalHistorial } from "./modalHistorial.js";
 
 /* Conexion a la bd */
@@ -115,7 +115,7 @@ function modalBebida(detallesBebida) {
     <button class="cerrarModal rounded-lg bg-red-500 hover:bg-red-800 text-white px-4 py-2 font-semibold mb-3">Cerrar</button>
 
   <div>
-    <img src="${detallesBebida.imagen}" alt="${
+    <img src=".${detallesBebida.imagen}" alt="${
     detallesBebida.alt
   }" class="max-w-sm h-48 object-cover rounded-t-lg mb-4 block mx-auto">
   </div>

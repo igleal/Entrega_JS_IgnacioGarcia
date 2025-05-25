@@ -53,7 +53,7 @@ function modalInfoCarrito(carritoStorage, contenedorPrincipal) {
     modalInfo.className =
       "flex items-center justify-between gap-8 bg-white shadow-md rounded-lg p-4 max-w-3xl p-2 mb-4";
     modalInfo.innerHTML = `
-    <img src="..${bebida.imagen}" alt="${
+    <img src=".${bebida.imagen}" alt="${
       bebida.alt
     }" class="w-30 h-30 object-cover rounded">
     
