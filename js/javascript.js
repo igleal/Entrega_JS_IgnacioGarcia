@@ -1,220 +1,241 @@
-const cafeBebidas = [
-  {
-    id: 1,
-    nombre: "Latte Hot",
-    descripcion: "Espresso y leche al vapor.",
-    precio: 3.75,
-    imagen: "/assets/img_productos/latte_hot.png",
-    alt: "Latte caliente con espresso y leche al vapor",
-  },
-  {
-    id: 2,
-    nombre: "Latte Iced",
-    descripcion: "Espresso y leche; servido sobre hielo.",
-    precio: 4.0,
-    imagen: "/assets/img_productos/latte_iced.png",
-    alt: "Latte frío servido con hielo",
-  },
-  {
-    id: 3,
-    nombre: "Mocha Iced",
-    descripcion:
-      "Chocolate real y espresso combinado con leche; servido sobre hielo.",
-    precio: 4.5,
-    imagen: "/assets/img_productos/mocha_iced.png",
-    alt: "Mocha frío con chocolate y espresso sobre hielo",
-  },
-  {
-    id: 4,
-    nombre: "Mocha Hot",
-    descripcion:
-      "Chocolate real derretido en leche al vapor, combinado con espresso y cubierto con crema batida y chispas de chocolate.",
-    precio: 4.75,
-    imagen: "/assets/img_productos/mocha_hot.png",
-    alt: "Mocha caliente con crema batida y chispas de chocolate",
-  },
-  {
-    id: 5,
-    nombre: "Cappuccino",
-    descripcion:
-      "Espresso y leche al vapor cubierto con una capa profunda de espuma.",
-    precio: 3.95,
-    imagen: "/assets/img_productos/cappuccino.png",
-    alt: "Cappuccino espumoso servido en taza",
-  },
-  {
-    id: 6,
-    nombre: "Americano Hot",
-    descripcion: "Espresso con agua caliente humeante.",
-    precio: 3.0,
-    imagen: "/assets/img_productos/americano_hot.png",
-    alt: "Café americano caliente con espresso y agua",
-  },
-  {
-    id: 7,
-    nombre: "Americano Iced",
-    descripcion: "Espresso fresco enfriado sobre hielo.",
-    precio: 3.25,
-    imagen: "/assets/img_productos/americano_iced.png",
-    alt: "Americano frío servido sobre hielo",
-  },
-  {
-    id: 8,
-    nombre: "Espresso",
-    descripcion: "Espresso recién hecho.",
-    precio: 2.5,
-    imagen: "/assets/img_productos/espresso.png",
-    alt: "Taza de espresso recién preparado",
-  },
-  {
-    id: 9,
-    nombre: "Macchiato",
-    descripcion: "Espresso rematado con una cucharada de espuma.",
-    precio: 2.75,
-    imagen: "/assets/img_productos/macchiato.png",
-    alt: "Macchiato con espuma en la parte superior",
-  },
-  {
-    id: 10,
-    nombre: "Latte de Avellana de Chocolate Oscuro",
-    descripcion:
-      "Espresso Forte y leche al vapor combinada con ricos cocoas y jarabe de avellana. Cubierto con crema batida.",
-    precio: 5.0,
-    imagen: "/assets/img_productos/latte_avellana_chocolate_oscuro.png",
-    alt: "Latte de avellana con crema batida",
-  },
-  {
-    id: 11,
-    nombre: "Latte Eggnog",
-    descripcion: "Espresso Forte combinado con ponche de huevo al vapor.",
-    precio: 5.25,
-    imagen: "/assets/img_productos/latte_eggnog.png",
-    alt: "Latte de ponche de huevo con espresso",
-  },
-  {
-    id: 12,
-    nombre: "Candy Cane Blanco Chocolate Caliente",
-    descripcion:
-      "Chocolate blanco suave combinado con menta. ¡Un favorito de vacaciones de niños y adultos por igual!",
-    precio: 4.95,
-    imagen: "/assets/img_productos/candy_cane_chocolate_blanco_caliente.png",
-    alt: "Chocolate blanco caliente con menta estilo Candy Cane",
-  },
-  {
-    id: 13,
-    nombre: "Tostada de Canela Latte",
-    descripcion:
-      "Espresso Forte y leche al vapor combinados con sabores de azúcar caramelizada y canela dulce.",
-    precio: 5.0,
-    imagen: "/assets/img_productos/tostada_canela_latte.png",
-    alt: "Latte con sabor a tostada de canela",
-  },
-  {
-    id: 14,
-    nombre: "Moccaccino de Menta",
-    descripcion:
-      "Audaz Espresso Forte combinado con jarabe de menta y chocolate cremoso.",
-    precio: 5.25,
-    imagen: "/assets/img_productos/moccaccino_menta.png",
-    alt: "Moccaccino con chocolate y menta",
-  },
-  {
-    id: 15,
-    nombre: "Caramelo Chai de Avena Iced",
-    descripcion:
-      "Mezcla festiva de especias chai, leche de avena cremosa y caramelo, servido sobre hielo.",
-    precio: 4.85,
-    imagen: "/assets/img_productos/caramelo_chai_avena_iced.png",
-    alt: "Chai helado con leche de avena y caramelo",
-  },
-  {
-    id: 16,
-    nombre: "Tostada de Canela de Avena Latte",
-    descripcion:
-      "Leche de avena cremosa y Espresso Forte infundida con los sabores de tostadas de canela.",
-    precio: 5.1,
-    imagen: "/assets/img_productos/tostada_canela_avena_latte.png",
-    alt: "Latte de avena con sabor a tostada de canela",
-  },
-];
+import { modalCarrito } from "./factura.js";
+import { modalHistorial } from "./modalHistorial.js";
 
-const bebidaContenedor = document.getElementById("contenedor_Bebidas");
-bebidaContenedor.className = `bg-lime-100 flex flex-col items-center`;
+/* Conexion a la bd */
 
-function botonCarta() {
-  const cartaBotones = document.createElement("div");
-  cartaBotones.className = `w-screen flex items-center justify-between bg-lime-300 p-4`;
-  cartaBotones.innerHTML = `
-  <a href="" class="bg-lime-400 hover:bg-lime-600 p-2 rounded-lg text-sm">Historial de Compras</a>
-  <a href="./page/factura.html" class="bg-lime-400 hover:bg-lime-600 p-2 rounded-lg text-sm">Ver Factura</a>
+const leerBdd = async () => {
+  const URL = "./db/bd.json";
+  const mensajeError = "<span>Falla de la conexion al Servidor..</span>";
+  let renderizar = ``;
+
+  try {
+    const respuesta = await fetch(URL);
+    const datos = await respuesta.json();
+    mostrarBdd(datos);
+  } catch (err) {
+    renderizar = mensajeError;
+    document.body.innerHTML = renderizar;
+  }
+};
+
+leerBdd();
+
+/* Renderizo el contenidor con el id en el HTML */
+
+const contenedorPrincipal = document.getElementById("contenedor_principal");
+contenedorPrincipal.className = `bg-lime-100 flex flex-col items-center`;
+
+function contenedorNavegacion() {
+  const divBotones = document.createElement("div");
+  divBotones.className = `w-screen flex items-center justify-between bg-lime-300 p-4`;
+  divBotones.innerHTML = `
+  <button class="historialCompras bg-lime-400 hover:bg-lime-600 p-2 rounded-lg text-sm">Historial</button>
+  <button class="carritoCompras bg-lime-400 hover:bg-lime-600 p-2 rounded-lg text-sm">Ver Carrito</button>
   `;
 
-  bebidaContenedor.appendChild(cartaBotones);
+  contenedorPrincipal.appendChild(divBotones);
 }
 
-botonCarta();
+contenedorNavegacion();
 
-function mostrarBebidas(cafeBebidas) {
+/* Funciones para abrir el modal de Carrito y Historial que estoy importado de mi otro archivo js */
+
+function abrirModalCarrito() {
+  const botonCarrito = document.querySelector("button.carritoCompras");
+
+  botonCarrito.addEventListener("click", () => {
+    modalCarrito(contenedorPrincipal);
+  });
+}
+abrirModalCarrito();
+
+function abrirModalHistorial() {
+  const botonHistorial = document.querySelector("button.historialCompras");
+
+  botonHistorial.addEventListener("click", () => {
+    modalHistorial(contenedorPrincipal);
+  });
+}
+abrirModalHistorial();
+
+/* Funcion que renderiza las bedidas de la bd */
+
+function mostrarBdd(datoBebidas) {
   const divBedida = document.createElement("div");
   divBedida.className = `flex flex-wrap justify-center gap-4 pt-4`;
 
-  cafeBebidas.forEach((bebida) => {
-    const cartaBedida = document.createElement("article");
-
-    cartaBedida.className =
+  datoBebidas.forEach((bebida) => {
+    const articleBebida = document.createElement("article");
+    articleBebida.className =
       "bg-indigo-200 shadow-md rounded-lg p-4 min-w-sm max-w-sm";
 
-    cartaBedida.innerHTML = `
+    articleBebida.innerHTML = `
     <img src=".${bebida.imagen}" alt="${bebida.alt}" class="max-w-sm h-48 object-cover rounded-t-lg mb-4 block mx-auto">
     <h2 class="text-xl font-semibold text-gray-800 mb-2">${bebida.nombre}</h2>
-    <p class="text-gray-600 text-sm mb-4">${bebida.descripcion}</p>
     <h3 class="text-gray-800 text-sm mb-4 font-semibold">${bebida.precio} $</h3>
-    <button id="${bebida.id}"class="botonFactura px-4 p-2 rounded-lg bg-lime-400 hover:bg-lime-600 duration-600 text-sm mx">Agregar</button>`;
+    <button id="${bebida.id}"class="botonModal px-4 py-2 rounded-lg bg-lime-400 hover:bg-lime-600 duration-600 text-sm">Agregar</button>`;
 
-    divBedida.appendChild(cartaBedida);
+    divBedida.appendChild(articleBebida);
   });
-  bebidaContenedor.appendChild(divBedida);
-  agregarFactura();
+  contenedorPrincipal.appendChild(divBedida);
+  abrirModalBebida(datoBebidas);
 }
 
-mostrarBebidas(cafeBebidas);
+/* Funcion que renderiza el modal de agregar bebidas al localStorage */
 
-function agregarFactura() {
-  const botonFactura = document.querySelectorAll("button.botonFactura");
+function abrirModalBebida(datoBebidas) {
+  const modalBoton = document.querySelectorAll("button.botonModal");
 
-  botonFactura.forEach((boton) => {
+  modalBoton.forEach((boton) => {
     boton.addEventListener("click", (e) => {
-      const idbebida = e.currentTarget.id;
-      const bebidaSelecionado = cafeBebidas.find(
-        (bebida) => bebida.id == idbebida
+      const idBebida = e.currentTarget.id;
+      const bebidaSelecionada = datoBebidas.find(
+        (bebida) => bebida.id == idBebida
       );
-
-      const bebidasGuardadas =
-        JSON.parse(localStorage.getItem("bebidaStorage")) || [];
-
-      const verificaBebida = bebidasGuardadas.find(
-        (bsGuardada) => bsGuardada.id === bebidaSelecionado.id
-      );
-
-      if (verificaBebida) {
-        verificaBebida.cantidad++;
-      } else {
-        const bebida = {
-          ...bebidaSelecionado,
-          cantidad: 1,
-        };
-        bebidasGuardadas.push(bebida);
+      const detallesBebida = {
+        ...bebidaSelecionada,
+        cantidad: 1,
+      };
+      if (detallesBebida) {
+        modalBebida(detallesBebida);
       }
-      localStorage.setItem("bebidaStorage", JSON.stringify(bebidasGuardadas));
-
-      Toastify({
-        text: "Compra Agregada",
-        duration: 1500,
-        gravity: "top",
-        position: "right",
-        backgroundColor: "#f87171",
-      }).showToast();
     });
   });
 }
 
+function modalBebida(detallesBebida) {
+  const modalFondo = document.createElement("div");
+  modalFondo.className =
+    "fixed w-full h-full bg-black/40 flex items-center justify-center cerrarModal";
+
+  const modalInfo = document.createElement("div");
+  modalInfo.className = "bg-indigo-200 shadow-md rounded-lg w-[500px] p-4";
+
+  modalInfo.innerHTML = `
+    <button class="cerrarModal rounded-lg bg-red-500 hover:bg-red-800 text-white px-4 py-2 font-semibold mb-3">Cerrar</button>
+
+  <div>
+    <img src="${detallesBebida.imagen}" alt="${
+    detallesBebida.alt
+  }" class="max-w-sm h-48 object-cover rounded-t-lg mb-4 block mx-auto">
+  </div>
+
+  <div class="flex flex-col w-full px-4 bg-white p-2 rounded-lg">
+
+    <div class"text-gray-800"">
+      <h2>${detallesBebida.nombre}</h2>
+      <p>${detallesBebida.descripcion}</p>
+      <span class="">Precio unid. $ ${detallesBebida.precio}</span>
+    </div>
+
+    <div class="flex gap-16 py-4">
+      <span class="totalCantidad">Unids. ${detallesBebida.cantidad}</span>
+      <span class="precioCantidad">Precio Total. ${precioTotal(
+        detallesBebida
+      )}</span>
+    </div>
+
+    <div class="flex justify-between">
+      <div class="flex items-center gap-4">
+        <button class="cantidadResta rounded-lg bg-yellow-500 hover:bg-yellow-800 px-2 py-1 text-white font-bold">-</button>
+        <p class="cantidadTotal text-gray-800">${detallesBebida.cantidad}</p>
+        <button class="cantidadSuma rounded-lg bg-green-500 hover:bg-green-800 px-2 py-1 text-white font-bold">+</button>
+      </div>
+      <button class="agregarFactura rounded-lg bg-green-500 hover:bg-red-800 text-white px-4 py-2 font-semibold">Agregar</button>
+    </div>
+
+  </div>`;
+
+  modalFondo.appendChild(modalInfo);
+  contenedorPrincipal.appendChild(modalFondo);
+
+  cerrarModal(modalFondo);
+  agregarCarrito(detallesBebida, modalFondo);
+  cantidad(detallesBebida);
+}
+
+/* Funciones para cerrar y agregar al carrito */
+
+function cerrarModal(modalFondo) {
+  modalFondo.addEventListener("click", (e) => {
+    const cerrarModalDivInfo = e.target.matches("button.cerrarModal");
+    const cerrarModalDivFondo = e.target === modalFondo;
+    if (cerrarModalDivInfo || cerrarModalDivFondo) {
+      modalFondo.remove();
+    }
+  });
+}
+
+function agregarCarrito(detallesBebida, modalFondo) {
+  const agregar = document.querySelector("button.agregarFactura");
+
+  agregar.addEventListener("click", () => {
+    const bebidasGuardadas =
+      JSON.parse(localStorage.getItem("bebidaStorage")) || [];
+
+    const verificaBebida = bebidasGuardadas.find(
+      (bsGuardada) => bsGuardada.id === detallesBebida.id
+    );
+
+    if (verificaBebida) {
+      verificaBebida.cantidad += detallesBebida.cantidad;
+    } else {
+      bebidasGuardadas.push(detallesBebida);
+    }
+    localStorage.setItem("bebidaStorage", JSON.stringify(bebidasGuardadas));
+
+    modalFondo.remove();
+
+    Toastify({
+      text: "Compra Agregada",
+      duration: 1500,
+      gravity: "top",
+      position: "right",
+      offset: {
+        y: 60,
+      },
+      style: {
+        backgroundColor: "#f87171",
+      },
+    }).showToast();
+  });
+}
+
+function precioTotal(detallesBebida) {
+  const precio = parseFloat(detallesBebida.precio);
+  const cantidad = parseFloat(detallesBebida.cantidad);
+  const totalPrecio = precio * cantidad;
+
+  return totalPrecio.toLocaleString("es-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+  });
+}
+
+/* Funcion de aumentar o dismuir cantidad de bebidas en el modal */
+
+function cantidad(detallesBebida) {
+  const total = document.querySelector("p.cantidadTotal");
+  const precioCantidad = document.querySelector("span.precioCantidad");
+  const totalCantidad = document.querySelector("span.totalCantidad");
+
+  const botonResta = document.querySelector("button.cantidadResta");
+  const botonSuma = document.querySelector("button.cantidadSuma");
+
+  botonResta.addEventListener("click", () => {
+    if (detallesBebida.cantidad > 1) {
+      detallesBebida.cantidad--;
+      total.innerHTML = detallesBebida.cantidad;
+      totalCantidad.innerHTML = `Unids. ${detallesBebida.cantidad}`;
+      precioCantidad.innerHTML = `Precio Total. ${precioTotal(detallesBebida)}`;
+    }
+  });
+
+  botonSuma.addEventListener("click", () => {
+    detallesBebida.cantidad++;
+    total.innerHTML = detallesBebida.cantidad;
+    totalCantidad.innerHTML = `Unids. ${detallesBebida.cantidad}`;
+    precioCantidad.innerHTML = `Precio Total. ${precioTotal(detallesBebida)}`;
+  });
+}
